@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body: params.toString()
       });
       if (res.type === 'opaque') {
-        showToast('Saved (no-cors)');
+        showToast('Saved (successfully)');
         form.reset();
         return;
       }
