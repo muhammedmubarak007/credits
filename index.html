@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Credit Management - Data Entry</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <h1>Credit Management</h1>
+        <p class="subtitle">Record active and current credits with duration</p>
+    </header>
+
+    <main class="container">
+        <section id="configNotice" class="notice hidden" role="alert" aria-live="polite">
+            Configure your Google Apps Script Web App URL in <code>app.js</code> to enable saving.
+        </section>
+
+        <form id="creditForm" novalidate>
+            <div class="form-grid">
+                <div class="form-field">
+                    <label for="name">Name<span aria-hidden="true" class="req">*</span></label>
+                    <input id="name" name="name" type="text" autocomplete="name" placeholder="Enter customer name"
+                        required>
+                    <div class="help">Customer or account name.</div>
+                </div>
+
+
+
+                <div class="form-field">
+                    <label for="currentCredits">Current credits<span aria-hidden="true" class="req">*</span></label>
+                    <input id="currentCredits" name="currentCredits" type="number" min="0" step="1" inputmode="numeric"
+                        placeholder="e.g., 4" required>
+                    <div class="help">Whole number, minimum 0.</div>
+                </div>
+
+                <div class="form-field">
+                    <label for="durationSelection">Plan<span aria-hidden="true" class="req">*</span></label>
+                    <select id="durationSelection" name="durationSelection" required>
+                        <option value="4-2-2">4-2-2</option>
+                        <option value="4-4-2">4-4-2</option>
+                        <option value="4-4-4-2-2-2">4-4-4-2-2-2</option>
+                        <option value="4-2-2-2-2-2">4-2-2-2-2-2</option>
+                    </select>
+                    <div class="help">Select plan pattern. Each number is credits per month.</div>
+                </div>
+
+                <div class="form-field">
+                    <label for="subscriptionEndDate">Subscription end date</label>
+                    <input id="subscriptionEndDate" name="subscriptionEndDate" type="date" placeholder="YYYY-MM-DD">
+                    <div class="help">Optional. Used to calculate monthly credits until this date.</div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="actions">
+                <button id="submitBtn" type="submit" class="btn-primary">
+                    <span class="btn-text">Save entry</span>
+                    <span class="btn-spinner" aria-hidden="true"></span>
+                </button>
+                <button id="resetBtn" type="reset" class="btn-secondary">Reset</button>
+            </div>
+
+            <div id="formError" class="error" role="alert" aria-live="polite"></div>
+        </form>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+
+
+    <script src="./app.js"></script>
+</body>
+
+</html>
